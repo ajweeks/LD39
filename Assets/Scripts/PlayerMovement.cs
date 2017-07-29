@@ -2,13 +2,9 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject Child;
-
     public float MovementSpeed;
 
-    //private Vector2 _targetVelocity;
     private Rigidbody _rb;
-
 
 	void Start ()
     {
@@ -22,12 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (horizontalInput != 0.0f)
         {
-            _rb.AddForce(new Vector3(MovementSpeed * horizontalInput, 0, 0), ForceMode.Impulse);
+            _rb.AddForce(new Vector3(MovementSpeed * horizontalInput * Time.deltaTime, 0, 0), ForceMode.Impulse);
         }
 
         if (verticalInput != 0.0f)
         {
-            _rb.AddForce(new Vector3(0, 0, MovementSpeed * verticalInput), ForceMode.Impulse);
+            _rb.AddForce(new Vector3(0, 0, MovementSpeed * verticalInput * Time.deltaTime), ForceMode.Impulse);
         }
     }
 }
