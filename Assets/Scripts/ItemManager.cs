@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
     public Vector2 PlayingFieldDimensions;
     public GameObject Battery;
+    public GameObject BigBattery;
 
-    public float SecondsBetweenItemSpawns;
-    public float SecondsBeforeItemDespawn;
-    private float _secondsSinceItemSpawn;
+    [Range(0.0f, 1.0f)]
+    public float BigBatteryChance;
+
+    public float SecondsBetweenBatterySpawns;
+    public float SecondsBeforeBatteryDespawn;
+    private float _secondsSinceBatterySpawn;
 
     private struct SpawnedItem
     {
@@ -29,16 +32,25 @@ public class ItemManager : MonoBehaviour
 
     void Update()
     {
-        _secondsSinceItemSpawn += Time.deltaTime;
+        _secondsSinceBatterySpawn += Time.deltaTime;
 
-        if (_secondsSinceItemSpawn > SecondsBetweenItemSpawns)
+        if (_secondsSinceBatterySpawn > SecondsBetweenBatterySpawns)
         {
-            _secondsSinceItemSpawn = 0.0f;
+            _secondsSinceBatterySpawn = 0.0f;
 
             SpawnedItem newItem = new SpawnedItem();
-            newItem.Lifetime = SecondsBeforeItemDespawn;
+            newItem.Lifetime = SecondsBeforeBatteryDespawn;
             newItem.SecondsSinceSpawn = 0.0f;
-            newItem.Item = Instantiate(Battery);
+
+            bool bigBattery = BigBatteryChance <= Random.Range(0.0f, 1.0f);
+            if (bigBattery)
+            {
+                newItem.Item = Instantiate(BigBattery);
+            }
+            else
+            {
+                newItem.Item = Instantiate(Battery);
+            }
             newItem.Item.transform.position = FindOpenSpotOnPlayingField();
             newItem.Item.transform.rotation = Quaternion.Euler(90, Random.Range(0, 180), 0);
             newItem.Item.transform.parent = _itemsParent;
@@ -74,45 +86,9 @@ public class ItemManager : MonoBehaviour
             }
         }
 
-        if (_spawnedItemCount != itemCount)
-        {
-            int x = 1;
-            ++x;
-        }
-
+        Debug.Assert(_spawnedItemCount == itemCount);
         return spawnedItems;
     }
-
-    //public GameObject[] ItemsInRange(Vector3 center, float range, out float distance)
-    //{
-    //    GameObject[] itemsInRange;
-    //
-    //    float shortestDist = range;
-    //    int closestItemIndex = -1;
-    //    for (int i = 0; i < _spawnedItems.Length; i++)
-    //    {
-    //        if (_spawnedItems[i].Item != null)
-    //        {
-    //            float dist = Vector3.Distance(center, _spawnedItems[i].Item.transform.position);
-    //            if (dist <= shortestDist)
-    //            {
-    //                shortestDist = dist;
-    //                closestItemIndex = i;
-    //            }
-    //        }
-    //    }
-    //
-    //    if (closestItemIndex == -1)
-    //    {
-    //        distance = float.MaxValue;
-    //        return null;
-    //    }
-    //    else
-    //    {
-    //        distance = shortestDist;
-    //        return _spawnedItems[closestItemIndex].Item;
-    //    }
-    //}
 
     private Vector3 FindOpenSpotOnPlayingField()
     {

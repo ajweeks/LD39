@@ -20,6 +20,7 @@ public class PowerManager : MonoBehaviour
     public void OnBatteryPickup(Battery battery)
     {
         _powerLevel += battery.PowerLevel;
+        _powerLevel = Mathf.Clamp01(_powerLevel);
     }
 
     private void OnGUI()

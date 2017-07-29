@@ -12,9 +12,9 @@ public class Battery : MonoBehaviour
         _itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Child"))
+        if (collision.gameObject.CompareTag("Child"))
         {
             _itemManager.OnBatteryRemoved(gameObject);
         }
