@@ -6,11 +6,23 @@ public class GameManager : MonoBehaviour
  {
     public Vector2 PlayingFieldDimensions;
 
-    public AudioClip BackgroundMusic;
-    private AudioSource BackgroundMusicSource;
+    public AudioClip BounceSound;
+    private AudioSource BounceSoundSource;
 
     public AudioClip ButtonClickSound;
     private AudioSource ButtonClickSource;
+
+    public AudioClip GameOverSound;
+    private AudioSource GameOverSoundSource;
+
+    public AudioClip BatteryPickupSound;
+    private AudioSource BatteryPickupSoundSource;
+
+    public AudioClip BigBatteryPickupSound;
+    private AudioSource BigBatteryPickupSoundSource;
+
+    public AudioClip BackgroundMusic;
+    private AudioSource BackgroundMusicSource;
 
     [HideInInspector]
     public static float EnemyDrainOnTouchAmount;
@@ -24,7 +36,8 @@ public class GameManager : MonoBehaviour
     private static GameObject _pauseMenu;
     private static GameObject _gameOverMenu;
 
-    private Slider _volumeSlider;
+    private Slider _pauseVolumeSlider;
+    private Slider _gameOverVolumeSlider;
 
     void Start() 
 	{
@@ -36,10 +49,29 @@ public class GameManager : MonoBehaviour
 
         UpdateCanvases();
 
-        _volumeSlider = _pauseMenu.transform.Find("VolumeSlider").GetComponent<Slider>();
+        if (!_pauseVolumeSlider)
+        {
+            _pauseVolumeSlider = _pauseMenu.transform.Find("VolumeSlider").GetComponent<Slider>();
+            _pauseVolumeSlider.value = AudioListener.volume;
+        }
+
+        if (!_gameOverVolumeSlider)
+        {
+            _gameOverVolumeSlider = _gameOverMenu.transform.Find("VolumeSlider").GetComponent<Slider>();
+            _gameOverVolumeSlider.value = AudioListener.volume;
+        }
 
         ButtonClickSource = gameObject.AddComponent<AudioSource>();
         ButtonClickSource.clip = ButtonClickSound;
+
+        BounceSoundSource = gameObject.AddComponent<AudioSource>();
+        BounceSoundSource.clip = BounceSound;
+
+        BatteryPickupSoundSource = gameObject.AddComponent<AudioSource>();
+        BatteryPickupSoundSource.clip = BatteryPickupSound;
+
+        BigBatteryPickupSoundSource = gameObject.AddComponent<AudioSource>();
+        BigBatteryPickupSoundSource.clip = BigBatteryPickupSound;
 
         BackgroundMusicSource = gameObject.AddComponent<AudioSource>();
         BackgroundMusicSource.loop = true;
@@ -58,6 +90,8 @@ public class GameManager : MonoBehaviour
 
     public void OnGameOver()
     {
+        GameOverSoundSource.Play();
+
         _gameOver = true;
         _paused = true;
 
@@ -93,16 +127,46 @@ public class GameManager : MonoBehaviour
         _paused = false;
         UpdateCanvases();
 
+        GameOverSoundSource.Stop();
+
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OnVolumeSliderChange()
+    public void OnPauseVolumeSliderChange()
     {
-        AudioListener.volume = _volumeSlider.value;
+        if (_pauseVolumeSlider && _gameOverVolumeSlider)
+        {
+            AudioListener.volume = _pauseVolumeSlider.value;
+            _gameOverVolumeSlider.value = _pauseVolumeSlider.value;
+        }
+    }
+
+    public void OnGameOverVolumeSliderChange()
+    {
+        if (_pauseVolumeSlider && _gameOverVolumeSlider)
+        {
+            AudioListener.volume = _gameOverVolumeSlider.value;
+            _pauseVolumeSlider.value = _gameOverVolumeSlider.value;
+        }
     }
 
     public void OnButtonClick()
     {
         ButtonClickSource.Play();
+    }
+
+    public void OnPlayerBounce()
+    {
+        BounceSoundSource.Play();
+    }
+
+    public void OnBatteryPickup()
+    {
+        BatteryPickupSoundSource.Play();
+    }
+
+    public void OnBigBatteryPickup()
+    {
+        BigBatteryPickupSoundSource.Play();
     }
 }

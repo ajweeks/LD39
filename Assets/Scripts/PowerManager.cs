@@ -13,7 +13,6 @@ public class PowerManager : MonoBehaviour
         _powerLevel = 1.0f;
 
         _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
-
     }
 	
 	void Update ()
@@ -21,7 +20,7 @@ public class PowerManager : MonoBehaviour
         _powerLevel -= PowerLevelDrainPerSecond * Time.deltaTime;
         _powerLevel = Mathf.Clamp01(_powerLevel);
 
-        if (_powerLevel <= 0.0f)
+        if (!_gameManager.GameOver && _powerLevel <= 0.0f)
         {
             _gameManager.OnGameOver();
         }

@@ -9,12 +9,15 @@ public class ChildCollisionHandler : MonoBehaviour
     private PowerManager _powerManager;
     private PlayerMovement _playerMovement;
     private CameraController _cameraController;
+    private GameManager _gameManager;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
 
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+
+        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         _powerManager = player.GetComponent<PowerManager>();
@@ -34,6 +37,8 @@ public class ChildCollisionHandler : MonoBehaviour
             float yIntensity = _rb.velocity.z * _playerMovement.VelocityShakeScale * ScreenShakeScale;
             float duration = _rb.velocity.magnitude * _playerMovement.VelocityShakeDurationScale * ScreenShakeScale;
             _cameraController.Shake(xIntensity, yIntensity, duration);
+
+            _gameManager.OnPlayerBounce();
         }
     }
 }

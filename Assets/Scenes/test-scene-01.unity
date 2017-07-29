@@ -1476,7 +1476,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1913496720}
-        m_MethodName: OnVolumeSliderChange
+        m_MethodName: OnPauseVolumeSliderChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2636,7 +2636,7 @@ GameObject:
   - component: {fileID: 1427467296}
   - component: {fileID: 1427467295}
   m_Layer: 5
-  m_Name: VolumeText (1)
+  m_Name: VolumeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3834,7 +3834,7 @@ GameObject:
   - component: {fileID: 1934008998}
   - component: {fileID: 1934008999}
   m_Layer: 5
-  m_Name: VolumeSlider (1)
+  m_Name: VolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3908,7 +3908,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1913496720}
-        m_MethodName: OnVolumeSliderChange
+        m_MethodName: OnGameOverVolumeSliderChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3931,7 +3931,7 @@ GameObject:
   - component: {fileID: 1971454530}
   - component: {fileID: 1971454529}
   m_Layer: 5
-  m_Name: GameOverText (1)
+  m_Name: GameOverExtraText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

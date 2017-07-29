@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public float VelocityShakeDurationScale;
 
     private Rigidbody _rb;
-
+    private GameManager _gameManager;
     private CameraController _cameraController;
 
 	void Start ()
     {
         _rb = GetComponent<Rigidbody>();
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
     }
 	
 	void Update ()
@@ -44,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
             float yIntensity = _rb.velocity.z * VelocityShakeScale;
             float duration = _rb.velocity.magnitude * VelocityShakeDurationScale;
             _cameraController.Shake(xIntensity, yIntensity, duration);
+
+            _gameManager.OnPlayerBounce();
         }
     }
 }
