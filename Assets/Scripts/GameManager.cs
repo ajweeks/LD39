@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
  {
-    [HideInInspector]
-    public static bool Paused = false;
+    public static bool Paused { get { return _paused; } set { OnPause(value); } }
+    public static bool _paused = false;
 
     public static bool GameOver {  get { return _gameOver; } }
     private static bool _gameOver = false;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     void Start() 
 	{
-        Paused = false;
+        _paused = false;
         _gameOver = false;
 
         _pauseMenu = GameObject.Find("PausePanel");
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (Input.GetButtonUp("Cancel"))
         {
-            Paused = !Paused;
+            _paused = !_paused;
             UpdateCanvases();
         }
 	}
@@ -35,22 +35,29 @@ public class GameManager : MonoBehaviour
     public static void OnGameOver()
     {
         _gameOver = true;
-        Paused = true;
+        _paused = true;
+
+        UpdateCanvases();
+    }
+
+    public static void OnPause(bool paused)
+    {
+        _paused = paused;
 
         UpdateCanvases();
     }
 
     private static void UpdateCanvases()
     {
-        _pauseMenu.SetActive(Paused);
+        _pauseMenu.SetActive(GameOver ? false : _paused);
         _gameOverMenu.SetActive(GameOver);
-        Time.timeScale = Paused ? 0.0f : 1.0f;
+        Time.timeScale = _paused ? 0.0f : 1.0f;
     }
 
     public void OnRestart()
     {
         _gameOver = false;
-        Paused = false;
+        _paused = false;
         UpdateCanvases();
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
