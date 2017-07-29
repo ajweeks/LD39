@@ -43,9 +43,6 @@ public class PlayerMovement : MonoBehaviour
             float xIntensity = _rb.velocity.x * VelocityShakeScale;
             float yIntensity = _rb.velocity.z * VelocityShakeScale;
             float duration = _rb.velocity.magnitude * VelocityShakeDurationScale;
-            Debug.Log("Shake: " + xIntensity.ToString().Substring(0, 3) + ", " + 
-                yIntensity.ToString().Substring(0, 3) + " for " + 
-                duration.ToString().Substring(0, 3));
             _cameraController.Shake(xIntensity, yIntensity, duration);
         }
     }

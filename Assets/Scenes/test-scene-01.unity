@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b39d87d1760e0344ba83f71995bda37d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4414026, g: 0.49023145, b: 0.5702665, a: 1}
+  m_Sun: {fileID: 98896576}
+  m_IndirectSpecularColor: {r: 0.0035453066, g: 0.0037127617, b: 0.0035453066, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -134,8 +134,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.94411767, b: 0.8602941, a: 1}
-  m_Intensity: 0.42
+  m_Color: {r: 0.9277682, g: 0.92796206, b: 0.9558824, a: 1}
+  m_Intensity: 0.62
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -181,13 +181,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 98896575}
-  m_LocalRotation: {x: 0.75774294, y: -0.25870886, z: -0.007551741, w: 0.59903127}
+  m_LocalRotation: {x: 0.7388945, y: -0.19873485, z: 0.031154605, w: 0.64309317}
   m_LocalPosition: {x: -13.6, y: 7.95, z: -3.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 341521487}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 64.678, y: -131.28601, z: -110.311005}
+  m_LocalEulerAnglesHint: {x: 74.31, y: -129.2, z: -110.311005}
 --- !u!1 &180585531
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +793,16 @@ Prefab:
       propertyPath: ScreenShakeScale
       value: 0.524
       objectReference: {fileID: 0}
+    - target: {fileID: 23528572506144572, guid: 2b0e0ed1c7695cf48aeb49b3f87b4d27,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23528572506144572, guid: 2b0e0ed1c7695cf48aeb49b3f87b4d27,
+        type: 2}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b0e0ed1c7695cf48aeb49b3f87b4d27, type: 2}
   m_IsPrefabParent: 0
@@ -947,6 +957,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: SecondsBetweenSpawnsCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4837403259910200, guid: 0c5c6e4f0a457a94997e15f341e498bc, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4.5333185
@@ -978,6 +993,36 @@ Prefab:
     - target: {fileID: 4837403259910200, guid: 0c5c6e4f0a457a94997e15f341e498bc, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: MaxEnemyCount
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: SecondsBetweenSpawnsCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: SecondsBetweenSpawnsCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: SecondsBetweenSpawnsCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: SecondsBetweenSpawnsCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892993448990416, guid: 0c5c6e4f0a457a94997e15f341e498bc,
+        type: 2}
+      propertyPath: SecondsBetweenSpawnsCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c5c6e4f0a457a94997e15f341e498bc, type: 2}
@@ -1217,6 +1262,16 @@ Prefab:
         type: 2}
       propertyPath: SecondsBetweenBatterySpawns
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114370982113375084, guid: 54d6aeaddce6cf44d915c020566051fd,
+        type: 2}
+      propertyPath: PlayingFieldDimensions.x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114370982113375084, guid: 54d6aeaddce6cf44d915c020566051fd,
+        type: 2}
+      propertyPath: PlayingFieldDimensions.y
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54d6aeaddce6cf44d915c020566051fd, type: 2}
@@ -1597,6 +1652,11 @@ Prefab:
         type: 2}
       propertyPath: m_AllowMSAA
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20655995310751024, guid: 05caac55561189a4080288e198b5895d,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05caac55561189a4080288e198b5895d, type: 2}

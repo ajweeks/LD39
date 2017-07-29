@@ -33,8 +33,6 @@ public class ChildCollisionHandler : MonoBehaviour
             float xIntensity = _rb.velocity.x * _playerMovement.VelocityShakeScale * ScreenShakeScale;
             float yIntensity = _rb.velocity.z * _playerMovement.VelocityShakeScale * ScreenShakeScale;
             float duration = _rb.velocity.magnitude * _playerMovement.VelocityShakeDurationScale * ScreenShakeScale;
-            Debug.Log("Child shake: " + xIntensity.ToString().Substring(0, 3) + ", " + 
-                yIntensity.ToString().Substring(0, 3) + " for " + duration.ToString().Substring(0, 3));
             _cameraController.Shake(xIntensity, yIntensity, duration);
         }
     }

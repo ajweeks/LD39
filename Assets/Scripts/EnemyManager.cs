@@ -14,6 +14,8 @@ public class EnemyManager : MonoBehaviour
     private Transform _enemyParent;
     private float _secondsSinceLastSpawn;
 
+    private ItemManager _itemManager;
+
     private int _spawnedEnemyCount;
     private GameObject[] _spawnedEnemies;
 
@@ -23,6 +25,8 @@ public class EnemyManager : MonoBehaviour
 
         _enemyParent = GameObject.Find("Enemies").transform;
         _player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+
+        _itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
 
         // Give player an easy start
         _secondsSinceLastSpawn = SecondsBetweenSpawns * 3;
@@ -40,7 +44,11 @@ public class EnemyManager : MonoBehaviour
             _secondsSinceLastSpawn = 0.0f;
 
             GameObject newEnemy = Instantiate(Enemy);
-            newEnemy.transform.position = new Vector3();
+            Vector2 halfFieldDim = _itemManager.PlayingFieldDimensions / 2.0f;
+            newEnemy.transform.position = new Vector3(
+                Random.Range(-halfFieldDim.x, halfFieldDim.x), 
+                0.0f,
+                Random.Range(-halfFieldDim.y, halfFieldDim.y));
             newEnemy.transform.parent = _enemyParent;
 
             Vector3 dPos = _player.transform.position - newEnemy.transform.position;

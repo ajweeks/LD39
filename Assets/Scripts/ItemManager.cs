@@ -145,9 +145,9 @@ public class ItemManager : MonoBehaviour
         Debug.Assert(false, "Attempt to remove non-existent battery!");
     }
 
-    private void OnGUI()
-    {
-        GUILayout.Label("spawned item count: " + _spawnedItemCount);
-        GUILayout.Label("spawned item array size: " + _spawnedItems.Length);
-    }
+    //private void OnGUI()
+    //{
+    //    GUILayout.Label("spawned item count: " + _spawnedItemCount);
+    //    GUILayout.Label("spawned item array size: " + _spawnedItems.Length);
+    //}
 }
