@@ -24,6 +24,6 @@ public class PowerManager : MonoBehaviour
 
     private void OnGUI()
     {
-        GUILayout.Label("\n\n\nPower level: " + _powerLevel);
+       // GUILayout.Label("\n\n\nPower level: " + _powerLevel);
     }
 }

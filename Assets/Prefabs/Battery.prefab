@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 45
-  PowerLevel: 0.2
+  PowerLevel: 0.25
 --- !u!136 &136656903956963472
 CapsuleCollider:
   m_ObjectHideFlags: 1

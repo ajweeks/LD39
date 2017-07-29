@@ -27,19 +27,6 @@ public class ItemManager : MonoBehaviour
         _spawnedItems = new SpawnedItem[10];
     }
 
-    Vector3 FindOpenSpotOnPlayingField()
-    {
-        Vector2 halfFieldDim = PlayingFieldDimensions / 2.0f;
-
-        // TODO: Check if result is inside another object
-        Vector3 result = new Vector3(
-            Random.Range(-halfFieldDim.x, halfFieldDim.x),
-            0.2f,
-            Random.Range(-halfFieldDim.y, halfFieldDim.y));
-
-        return result;
-    }
-
     void Update()
     {
         _secondsSinceItemSpawn += Time.deltaTime;
@@ -47,7 +34,6 @@ public class ItemManager : MonoBehaviour
         if (_secondsSinceItemSpawn > SecondsBetweenItemSpawns)
         {
             _secondsSinceItemSpawn = 0.0f;
-            ++_spawnedItemCount;
 
             SpawnedItem newItem = new SpawnedItem();
             newItem.Lifetime = SecondsBeforeItemDespawn;
@@ -62,7 +48,7 @@ public class ItemManager : MonoBehaviour
 
         for (int i = 0; i < _spawnedItems.Length; ++i)
         {
-            if (_spawnedItems[i].Item)
+            if (_spawnedItems[i].Item != null)
             {
                 _spawnedItems[i].SecondsSinceSpawn += Time.deltaTime;
                 if (_spawnedItems[i].SecondsSinceSpawn > _spawnedItems[i].Lifetime)
@@ -73,11 +59,81 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    void InsertSpawnedItemInFirstEmptySlot(ref SpawnedItem item)
+    public GameObject[] GetSpawnedItems()
     {
+        if (_spawnedItemCount == 0) return null;
+
+        GameObject[] spawnedItems = new GameObject[_spawnedItemCount];
+
+        int itemCount = 0;
         for (int i = 0; i < _spawnedItems.Length; i++)
         {
-            if (!_spawnedItems[i].Item)
+            if (_spawnedItems[i].Item != null)
+            {
+                spawnedItems[itemCount++] = _spawnedItems[i].Item;
+            }
+        }
+
+        if (_spawnedItemCount != itemCount)
+        {
+            int x = 1;
+            ++x;
+        }
+
+        return spawnedItems;
+    }
+
+    //public GameObject[] ItemsInRange(Vector3 center, float range, out float distance)
+    //{
+    //    GameObject[] itemsInRange;
+    //
+    //    float shortestDist = range;
+    //    int closestItemIndex = -1;
+    //    for (int i = 0; i < _spawnedItems.Length; i++)
+    //    {
+    //        if (_spawnedItems[i].Item != null)
+    //        {
+    //            float dist = Vector3.Distance(center, _spawnedItems[i].Item.transform.position);
+    //            if (dist <= shortestDist)
+    //            {
+    //                shortestDist = dist;
+    //                closestItemIndex = i;
+    //            }
+    //        }
+    //    }
+    //
+    //    if (closestItemIndex == -1)
+    //    {
+    //        distance = float.MaxValue;
+    //        return null;
+    //    }
+    //    else
+    //    {
+    //        distance = shortestDist;
+    //        return _spawnedItems[closestItemIndex].Item;
+    //    }
+    //}
+
+    private Vector3 FindOpenSpotOnPlayingField()
+    {
+        Vector2 halfFieldDim = PlayingFieldDimensions / 2.0f;
+
+        // TODO: Check if result is inside another object
+        Vector3 result = new Vector3(
+            Random.Range(-halfFieldDim.x, halfFieldDim.x),
+            0.2f,
+            Random.Range(-halfFieldDim.y, halfFieldDim.y));
+
+        return result;
+    }
+
+    private void InsertSpawnedItemInFirstEmptySlot(ref SpawnedItem item)
+    {
+        ++_spawnedItemCount;
+
+        for (int i = 0; i < _spawnedItems.Length; i++)
+        {
+            if (_spawnedItems[i].Item == null)
             {
                 _spawnedItems[i] = item;
                 return;
@@ -92,11 +148,25 @@ public class ItemManager : MonoBehaviour
         _spawnedItems[_spawnedItemCount - 1] = item;
     }
 
-    void RemoveSpawnedItem(int itemIndex)
+    private void RemoveSpawnedItem(int itemIndex)
     {
         Destroy(_spawnedItems[itemIndex].Item);
         _spawnedItems[itemIndex].Item = null;
         --_spawnedItemCount;
+    }
+
+    public void OnBatteryRemoved(GameObject battery)
+    {
+        for (int i = 0; i < _spawnedItems.Length; i++)
+        {
+            if (_spawnedItems[i].Item == battery)
+            {
+                RemoveSpawnedItem(i);
+                return;
+            }
+        }
+
+        Debug.Assert(false, "Attempt to remove non-existent battery!");
     }
 
     private void OnGUI()
