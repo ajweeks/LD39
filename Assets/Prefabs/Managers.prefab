@@ -95,7 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47bc23414be1434087cb9eef537185c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayingFieldDimensions: {x: 17, y: 11}
   Battery: {fileID: 1272655538993056, guid: 1a4ecb64d140dd64fac2142fbc68b21f, type: 2}
   BigBattery: {fileID: 1272655538993056, guid: 2f3f8f7b08ab6164789ff91e16a81db3, type: 2}
   BigBatteryChance: 0.449
@@ -126,4 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc8b7a40caedf14d8ec3bb53f61054f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Paused: 0
+  PlayingFieldDimensions: {x: 17, y: 11}
+  BackgroundMusic: {fileID: 8300000, guid: b0f8e2f58e5d30147a6081a3aa439ce3, type: 3}
+  ButtonClickSound: {fileID: 8300000, guid: b6c27b7c89ccb82478a432f3b682230e, type: 3}
+  _paused: 0

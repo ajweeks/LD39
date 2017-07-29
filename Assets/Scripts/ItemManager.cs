@@ -2,7 +2,6 @@
 
 public class ItemManager : MonoBehaviour
 {
-    public Vector2 PlayingFieldDimensions;
     public GameObject Battery;
     public GameObject BigBattery;
 
@@ -24,10 +23,16 @@ public class ItemManager : MonoBehaviour
     private int _spawnedItemCount;
     private SpawnedItem[] _spawnedItems;
 
+    private GameManager _gameManager;
+
 	void Start ()
     {
+        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
         _itemsParent = GameObject.Find("Items").transform;
         _spawnedItems = new SpawnedItem[10];
+
+        // Spawn the first battery sooner
+        _secondsSinceBatterySpawn = SecondsBetweenBatterySpawns * 0.75f;
     }
 
     void Update()
@@ -92,7 +97,7 @@ public class ItemManager : MonoBehaviour
 
     private Vector3 FindOpenSpotOnPlayingField()
     {
-        Vector2 halfFieldDim = PlayingFieldDimensions / 2.0f;
+        Vector2 halfFieldDim = _gameManager.PlayingFieldDimensions / 2.0f;
 
         // TODO: Check if result is inside another object
         Vector3 result = new Vector3(

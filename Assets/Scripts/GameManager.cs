@@ -1,16 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
  {
-    public static bool Paused { get { return _paused; } set { OnPause(value); } }
-    public static bool _paused = false;
+    public Vector2 PlayingFieldDimensions;
 
-    public static bool GameOver {  get { return _gameOver; } }
-    private static bool _gameOver = false;
+    public AudioClip BackgroundMusic;
+    private AudioSource BackgroundMusicSource;
+
+    public AudioClip ButtonClickSound;
+    private AudioSource ButtonClickSource;
+
+    [HideInInspector]
+    public static float EnemyDrainOnTouchAmount;
+
+    public bool Paused { get { return _paused; } set { OnPause(value); } }
+    public bool _paused = false;
+
+    public bool GameOver {  get { return _gameOver; } }
+    private bool _gameOver = false;
 
     private static GameObject _pauseMenu;
     private static GameObject _gameOverMenu;
+
+    private Slider _volumeSlider;
 
     void Start() 
 	{
@@ -21,18 +35,28 @@ public class GameManager : MonoBehaviour
         _gameOverMenu = GameObject.Find("GameOverPanel");
 
         UpdateCanvases();
+
+        _volumeSlider = _pauseMenu.transform.Find("VolumeSlider").GetComponent<Slider>();
+
+        ButtonClickSource = gameObject.AddComponent<AudioSource>();
+        ButtonClickSource.clip = ButtonClickSound;
+
+        BackgroundMusicSource = gameObject.AddComponent<AudioSource>();
+        BackgroundMusicSource.loop = true;
+        BackgroundMusicSource.clip = BackgroundMusic;
+        BackgroundMusicSource.Play();
     }
 
     void Update() 
 	{
 		if (Input.GetButtonUp("Cancel"))
         {
-            _paused = !_paused;
+            OnPause(!_paused);
             UpdateCanvases();
         }
 	}
 
-    public static void OnGameOver()
+    public void OnGameOver()
     {
         _gameOver = true;
         _paused = true;
@@ -40,14 +64,23 @@ public class GameManager : MonoBehaviour
         UpdateCanvases();
     }
 
-    public static void OnPause(bool paused)
+    public void OnPause(bool paused)
     {
         _paused = paused;
+
+        if (paused)
+        {
+            BackgroundMusicSource.Pause();
+        }
+        else
+        {
+            BackgroundMusicSource.Play();
+        }
 
         UpdateCanvases();
     }
 
-    private static void UpdateCanvases()
+    private void UpdateCanvases()
     {
         _pauseMenu.SetActive(GameOver ? false : _paused);
         _gameOverMenu.SetActive(GameOver);
@@ -61,5 +94,15 @@ public class GameManager : MonoBehaviour
         UpdateCanvases();
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnVolumeSliderChange()
+    {
+        AudioListener.volume = _volumeSlider.value;
+    }
+
+    public void OnButtonClick()
+    {
+        ButtonClickSource.Play();
     }
 }

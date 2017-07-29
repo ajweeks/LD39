@@ -24,6 +24,11 @@ public class CameraController : MonoBehaviour
     {
         if (_durationRemaining > 0.0f)
         {
+            if (Time.timeScale == 0.0f)
+            {
+                _durationRemaining = 0.0f;
+            }
+
             _durationRemaining -= Time.deltaTime;
             _durationRemaining = Mathf.Max(0.0f, _durationRemaining);
 

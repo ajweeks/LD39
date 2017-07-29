@@ -6,10 +6,15 @@ public class PowerManager : MonoBehaviour
     public float PowerLevel { get { return _powerLevel; } }
     private float _powerLevel; // [0.0f, 1.0f]
 
+    private GameManager _gameManager;
+
 	void Start ()
     {
         _powerLevel = 1.0f;
-	}
+
+        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
+
+    }
 	
 	void Update ()
     {
@@ -18,7 +23,7 @@ public class PowerManager : MonoBehaviour
 
         if (_powerLevel <= 0.0f)
         {
-            GameManager.OnGameOver();
+            _gameManager.OnGameOver();
         }
 	}
 
@@ -26,6 +31,15 @@ public class PowerManager : MonoBehaviour
     {
         _powerLevel += battery.PowerLevel;
         _powerLevel = Mathf.Clamp01(_powerLevel);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (GetComponent<Collider>().CompareTag("Enemy"))
+        {
+            _powerLevel -= GameManager.EnemyDrainOnTouchAmount;
+            _powerLevel = Mathf.Clamp01(_powerLevel);
+        }
     }
 
     //private void OnGUI()
