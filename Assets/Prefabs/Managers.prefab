@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1972853853140322}
+  m_IsPrefabParent: 1
+--- !u!1 &1972853853140322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4245425929900024}
+  - component: {fileID: 114875367785785360}
+  - component: {fileID: 114067320767204338}
+  - component: {fileID: 114726494215175362}
+  - component: {fileID: 114065897977916922}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4245425929900024
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972853853140322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114065897977916922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972853853140322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45d567018272d246b4c682b4662036c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerBarImage: {fileID: 0}
+  PowerBarColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0.72509253, g: 0.75735295, b: 0.1726319, a: 1}
+    key2: {r: 0.110618494, g: 0.6838235, b: 0.20944697, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 15806
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+--- !u!114 &114067320767204338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972853853140322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47bc23414be1434087cb9eef537185c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayingFieldDimensions: {x: 17, y: 11}
+  Battery: {fileID: 1272655538993056, guid: 1a4ecb64d140dd64fac2142fbc68b21f, type: 2}
+  BigBattery: {fileID: 1272655538993056, guid: 2f3f8f7b08ab6164789ff91e16a81db3, type: 2}
+  BigBatteryChance: 0.449
+  SecondsBetweenBatterySpawns: 2
+  SecondsBeforeBatteryDespawn: 6
+--- !u!114 &114726494215175362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972853853140322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0eea87538fdca946b061fe972f5fd6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecondsBetweenSpawns: 2
+  MaxEnemyCount: 80
+  Enemy: {fileID: 1962420539690532, guid: af91db414a1d9ed46b04d59a19068e91, type: 2}
+--- !u!114 &114875367785785360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972853853140322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc8b7a40caedf14d8ec3bb53f61054f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Paused: 0

@@ -9,7 +9,7 @@ public class Battery : MonoBehaviour
 
     private void Start()
     {
-        _itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
+        _itemManager = GameObject.Find("Managers").GetComponent<ItemManager>();
     }
 
     private void OnCollisionEnter(Collision collision)

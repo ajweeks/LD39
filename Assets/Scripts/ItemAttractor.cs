@@ -10,8 +10,8 @@ public class ItemAttractor : MonoBehaviour
 
     private void Start()
     {
-        _itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
-        Debug.Assert(_itemManager, "Couldn't find Item Manager object!");
+        _itemManager = GameObject.Find("Managers").GetComponent<ItemManager>();
+        Debug.Assert(_itemManager, "Couldn't find Managers object!");
     }
 
     private void Update()

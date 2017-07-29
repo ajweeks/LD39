@@ -15,6 +15,11 @@ public class PowerManager : MonoBehaviour
     {
         _powerLevel -= PowerLevelDrainPerSecond * Time.deltaTime;
         _powerLevel = Mathf.Clamp01(_powerLevel);
+
+        if (_powerLevel <= 0.0f)
+        {
+            GameManager.OnGameOver();
+        }
 	}
 
     public void OnBatteryPickup(Battery battery)
@@ -23,8 +28,8 @@ public class PowerManager : MonoBehaviour
         _powerLevel = Mathf.Clamp01(_powerLevel);
     }
 
-    private void OnGUI()
-    {
-       // GUILayout.Label("\n\n\nPower level: " + _powerLevel);
-    }
+    //private void OnGUI()
+    //{
+    //  GUILayout.Label("\n\n\nPower level: " + _powerLevel);
+    //}
 }

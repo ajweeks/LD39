@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c892f68b0f5294dbd86ba0b89806cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerLevelDrainPerSecond: 0.1
+  PowerLevelDrainPerSecond: 0.15
 --- !u!114 &114490436172268298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 90
+  VelocityShakeScale: 0.0104
+  VelocityShakeDurationScale: 0.087
 --- !u!135 &135382105761590536
 SphereCollider:
   m_ObjectHideFlags: 1

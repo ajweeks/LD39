@@ -56,6 +56,7 @@ public class CameraController : MonoBehaviour
     {
         _xIntensity = xIntensity;
         _yIntensity = yIntensity;
+        _shakeDuration = duration;
         _durationRemaining = duration;
         _shakeOffset = Vector3.zero;
     }

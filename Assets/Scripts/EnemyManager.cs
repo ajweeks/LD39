@@ -3,8 +3,6 @@
 public class EnemyManager : MonoBehaviour
  {
     public float SecondsBetweenSpawns;
-    public AnimationCurve SecondsBetweenSpawnsCurve;
-    public float RoundLength;
 
     public int MaxEnemyCount;
 
@@ -26,7 +24,7 @@ public class EnemyManager : MonoBehaviour
         _enemyParent = GameObject.Find("Enemies").transform;
         _player = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
-        _itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
+        _itemManager = GameObject.Find("Managers").GetComponent<ItemManager>();
 
         // Give player an easy start
         _secondsSinceLastSpawn = SecondsBetweenSpawns * 3;
