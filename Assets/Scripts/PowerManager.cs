@@ -3,6 +3,7 @@
 public class PowerManager : MonoBehaviour
 {
     public float PowerLevelDrainPerSecond;
+    public float PowerLevel { get { return _powerLevel; } }
     private float _powerLevel; // [0.0f, 1.0f]
 
 	void Start ()
