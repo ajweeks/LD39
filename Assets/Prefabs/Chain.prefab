@@ -80,7 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022920564975178}
   m_Layer: 0
-  m_Name: Rope
+  m_Name: Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

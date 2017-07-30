@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public AudioClip ExplosionSound;
     private AudioSource ExplosionSoundSource;
 
+    public AudioClip PlayerDamageSound;
+    private AudioSource PlayerDamageSoundSource;
+
     public AudioClip BackgroundMusic;
     private AudioSource BackgroundMusicSource;
 
@@ -43,6 +46,8 @@ public class GameManager : MonoBehaviour
     private static GameObject _gameOverMenu;
     private static GameObject _gameOverMenuRestartButton;
     private static Text _timerText;
+    private static Image _warningScreenOverlayImage;
+    private static PowerManager _powerManager;
 
     private Slider _pauseVolumeSlider;
     private Slider _gameOverVolumeSlider;
@@ -95,12 +100,18 @@ public class GameManager : MonoBehaviour
         GameOverSoundSource = gameObject.AddComponent<AudioSource>();
         GameOverSoundSource.clip = GameOverSound;
 
+        PlayerDamageSoundSource = gameObject.AddComponent<AudioSource>();
+        PlayerDamageSoundSource.clip = PlayerDamageSound;
+
         BackgroundMusicSource = gameObject.AddComponent<AudioSource>();
         BackgroundMusicSource.loop = true;
         BackgroundMusicSource.clip = BackgroundMusic;
         BackgroundMusicSource.Play();
 
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Default"), LayerMask.NameToLayer("GroundPlane"));
+
+        _powerManager = GameObject.Find("Player").GetComponent<PowerManager>();
+        _warningScreenOverlayImage = GameObject.Find("WarningScreenOverlayImage").GetComponent<Image>();
     }
 
     void Update() 
@@ -118,6 +129,24 @@ public class GameManager : MonoBehaviour
             OnPause(!_paused);
             UpdateCanvases();
             OnButtonClick();
+        }
+
+        float minPowerLevel = 0.35f;
+        if (_powerManager.PowerLevel < minPowerLevel && _powerManager.PowerLevel != 0.0f)
+        {
+            Color color =_warningScreenOverlayImage.color;
+            float alpha = (1.0f - _powerManager.PowerLevel / minPowerLevel);
+            color.a = alpha;
+            _warningScreenOverlayImage.color = color;
+        }
+        else
+        {
+            if (_warningScreenOverlayImage.color.a != 0.0f)
+            {
+                Color color = _warningScreenOverlayImage.color;
+                color.a = 0.0f;
+                _warningScreenOverlayImage.color = color;
+            }
         }
 	}
 
@@ -220,5 +249,10 @@ public class GameManager : MonoBehaviour
     public void OnExplosion()
     {
         ExplosionSoundSource.Play();
+    }
+
+    public void OnPlayerDamage()
+    {
+        PlayerDamageSoundSource.Play();
     }
 }

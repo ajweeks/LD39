@@ -47,6 +47,8 @@ public class Bomb : MonoBehaviour
                     {
                         PowerManager powerManager = c.GetComponent<PowerManager>();
                         powerManager.OnBombExplosion(this);
+
+                        _gameManager.OnPlayerDamage();
                     }
                 }
 
