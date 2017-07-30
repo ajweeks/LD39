@@ -82,9 +82,4 @@ public class Bomb : MonoBehaviour
     {
         _fuseLit = true;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(transform.position, ExplosionRadius);
-    }
 }
