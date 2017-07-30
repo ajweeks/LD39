@@ -57,7 +57,7 @@ public class ItemManager : MonoBehaviour
                 newItem.Item = Instantiate(Battery);
             }
             newItem.Item.transform.position = FindOpenSpotOnPlayingField();
-            newItem.Item.transform.rotation = Quaternion.Euler(90, Random.Range(0, 180), 0);
+            newItem.Item.transform.rotation = Quaternion.Euler(0, Random.Range(0, 180), 0);
             newItem.Item.transform.parent = _itemsParent;
 
             InsertSpawnedItemInFirstEmptySlot(ref newItem);
@@ -71,6 +71,19 @@ public class ItemManager : MonoBehaviour
                 if (_spawnedItems[i].SecondsSinceSpawn > _spawnedItems[i].Lifetime)
                 {
                     RemoveSpawnedItem(i);
+                }
+                // Start blinking when about to disappear
+                else if (_spawnedItems[i].SecondsSinceSpawn > _spawnedItems[i].Lifetime * 0.7f)
+                {
+                    float lifeRemaining = _spawnedItems[i].Lifetime - _spawnedItems[i].SecondsSinceSpawn;
+                    float blinkRate = _spawnedItems[i].Lifetime / 24.0f;
+                    bool hidden = Mathf.Repeat(lifeRemaining, blinkRate) < blinkRate / 2.0f;
+                    _spawnedItems[i].Item.GetComponent<MeshRenderer>().enabled = !hidden;
+                    var lights = _spawnedItems[i].Item.GetComponentsInChildren<Light>();
+                    for (int l = 0; l < lights.Length; ++l)
+                    {
+                        lights[l].enabled = !hidden;
+                    }
                 }
             }
         }

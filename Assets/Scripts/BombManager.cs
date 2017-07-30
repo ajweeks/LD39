@@ -41,6 +41,14 @@ public class BombManager : MonoBehaviour
                     Random.Range(-halfFieldDim.y, halfFieldDim.y));
                 newBomb.transform.parent = _bombParent;
 
+                // Add random torque
+                float randomTorqueScale = 500.0f;
+                Rigidbody bombRB = newBomb.GetComponent<Rigidbody>();
+                bombRB.AddTorque(new Vector3(
+                    Random.Range(-randomTorqueScale, randomTorqueScale),
+                    Random.Range(-randomTorqueScale, randomTorqueScale),
+                    Random.Range(-randomTorqueScale, randomTorqueScale)));
+
                 Bomb bombComponent = newBomb.GetComponent<Bomb>();
                 bombComponent.LightFuse();
             }

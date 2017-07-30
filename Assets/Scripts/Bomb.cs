@@ -15,11 +15,13 @@ public class Bomb : MonoBehaviour
     private float _secondsLit;
 
     private BombManager _bombManager;
+    private GameManager _gameManager;
     private MeshRenderer _meshRenderer;
 
 	void Start () 
 	{
         _bombManager = GameObject.Find("Managers").GetComponent<BombManager>();
+        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 	
@@ -46,8 +48,9 @@ public class Bomb : MonoBehaviour
 
                 _bombManager.OnBombExplosion(this);
 
-                // TODO: Trigger explosion particles
+                _gameManager.OnExplosion();
 
+                // TODO: Trigger explosion particles
             }
             else
             {

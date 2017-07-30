@@ -34,6 +34,6 @@ public class Battery : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(Vector3.back, Time.deltaTime * RotationSpeed);
+        transform.Rotate(Vector3.up, Time.deltaTime * RotationSpeed);
     }
 }

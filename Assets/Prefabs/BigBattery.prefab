@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1767135527953472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.539, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0158}
   m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4215230198789028}
@@ -82,15 +82,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272655538993056}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.8198037, y: 0.99, z: 3.0028796}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9473257, y: 0.735, z: 0.12252261}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 4250551306407484}
   - {fileID: 4139366150874856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4250551306407484
 Transform:
   m_ObjectHideFlags: 1
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500328210547944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.546, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.012500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4215230198789028}
@@ -117,7 +117,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f5ebf58adc81e6642ab779fbf6e85098, type: 2}
+  - {fileID: 2100000, guid: 61310eec60d487840aaff13795e8d8f2, type: 2}
+  - {fileID: 2100000, guid: 81ad1fa8258003946b0dde53e62ed1ef, type: 2}
+  - {fileID: 2100000, guid: d43ec9a6924ae4d4c84d59200609eda1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,7 +144,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272655538993056}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: bb2a7680f7a7f974194eba5851acc9c5, type: 3}
 --- !u!54 &54019689673314648
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -281,7 +283,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
+  m_Radius: 0.01
+  m_Height: 0.05
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

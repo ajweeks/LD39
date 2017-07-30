@@ -2142,27 +2142,6 @@ Prefab:
       propertyPath: PowerBarImage
       value: 
       objectReference: {fileID: 338323590}
-    - target: {fileID: 114442103079096252, guid: 37341bf7a0efca2469d5dcd92ab6af79,
-        type: 2}
-      propertyPath: SecondsOfInitialDelay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114442103079096252, guid: 37341bf7a0efca2469d5dcd92ab6af79,
-        type: 2}
-      propertyPath: SecondsBetweenBombs
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114442103079096252, guid: 37341bf7a0efca2469d5dcd92ab6af79,
-        type: 2}
-      propertyPath: SpawnHeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114442103079096252, guid: 37341bf7a0efca2469d5dcd92ab6af79,
-        type: 2}
-      propertyPath: Bomb
-      value: 
-      objectReference: {fileID: 1651142642600684, guid: be50206fb5db79e4bbdafb52ed56c80e,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37341bf7a0efca2469d5dcd92ab6af79, type: 2}
   m_IsPrefabParent: 0

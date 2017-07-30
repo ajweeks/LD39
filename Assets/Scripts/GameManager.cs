@@ -18,9 +18,12 @@ public class GameManager : MonoBehaviour
 
     public AudioClip BatteryPickupSound;
     private AudioSource BatteryPickupSoundSource;
-
+    
     public AudioClip BigBatteryPickupSound;
     private AudioSource BigBatteryPickupSoundSource;
+
+    public AudioClip ExplosionSound;
+    private AudioSource ExplosionSoundSource;
 
     public AudioClip BackgroundMusic;
     private AudioSource BackgroundMusicSource;
@@ -85,6 +88,9 @@ public class GameManager : MonoBehaviour
 
         BigBatteryPickupSoundSource = gameObject.AddComponent<AudioSource>();
         BigBatteryPickupSoundSource.clip = BigBatteryPickupSound;
+
+        ExplosionSoundSource = gameObject.AddComponent<AudioSource>();
+        ExplosionSoundSource.clip = ExplosionSound;
 
         GameOverSoundSource = gameObject.AddComponent<AudioSource>();
         GameOverSoundSource.clip = GameOverSound;
@@ -209,5 +215,10 @@ public class GameManager : MonoBehaviour
     public void OnBigBatteryPickup()
     {
         BigBatteryPickupSoundSource.Play();
+    }
+
+    public void OnExplosion()
+    {
+        ExplosionSoundSource.Play();
     }
 }

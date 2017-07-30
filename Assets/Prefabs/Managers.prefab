@@ -112,6 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66e017db63882040b7ef384de5940a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bomb: {fileID: 1651142642600684, guid: be50206fb5db79e4bbdafb52ed56c80e, type: 2}
+  SecondsOfInitialDelay: 0
+  SecondsBetweenBombs: 4.5
+  SpawnHeight: 10
 --- !u!114 &114726494215175362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,5 +148,6 @@ MonoBehaviour:
   BatteryPickupSound: {fileID: 8300000, guid: ae4d1d13f199fe040a3d47705f3b118a, type: 3}
   BigBatteryPickupSound: {fileID: 8300000, guid: 81a3bd68af6c6684ca91d5760ea18452,
     type: 3}
+  ExplosionSound: {fileID: 8300000, guid: 0b1949944e923474b9e8adc8f22aefbd, type: 3}
   BackgroundMusic: {fileID: 8300000, guid: b0f8e2f58e5d30147a6081a3aa439ce3, type: 3}
   _paused: 0
