@@ -35,9 +35,13 @@ public class GameManager : MonoBehaviour
 
     private static GameObject _pauseMenu;
     private static GameObject _gameOverMenu;
+    private static Text _timerText;
 
     private Slider _pauseVolumeSlider;
     private Slider _gameOverVolumeSlider;
+
+    public float SecondsElapsed { get { return _secondsElapsed; } }
+    private float _secondsElapsed;
 
     void Start() 
 	{
@@ -61,6 +65,8 @@ public class GameManager : MonoBehaviour
             _gameOverVolumeSlider.value = AudioListener.volume;
         }
 
+        _timerText = GameObject.Find("TimerText").GetComponent<Text>();
+
         ButtonClickSource = gameObject.AddComponent<AudioSource>();
         ButtonClickSource.clip = ButtonClickSound;
 
@@ -73,6 +79,9 @@ public class GameManager : MonoBehaviour
         BigBatteryPickupSoundSource = gameObject.AddComponent<AudioSource>();
         BigBatteryPickupSoundSource.clip = BigBatteryPickupSound;
 
+        GameOverSoundSource = gameObject.AddComponent<AudioSource>();
+        GameOverSoundSource.clip = GameOverSound;
+
         BackgroundMusicSource = gameObject.AddComponent<AudioSource>();
         BackgroundMusicSource.loop = true;
         BackgroundMusicSource.clip = BackgroundMusic;
@@ -81,7 +90,17 @@ public class GameManager : MonoBehaviour
 
     void Update() 
 	{
-		if (Input.GetButtonUp("Cancel"))
+        float lastSecondsElapsed = _secondsElapsed;
+        _secondsElapsed += Time.deltaTime;
+
+        // Only update timer if we changed 
+        //if (Mathf.Floor(_secondsElapsed) != Mathf.Floor(lastSecondsElapsed))
+        //{
+        _timerText.text = _secondsElapsed.ToString("#.0") + "s";
+        //}
+
+
+        if (Input.GetButtonUp("Cancel"))
         {
             OnPause(!_paused);
             UpdateCanvases();
@@ -127,6 +146,7 @@ public class GameManager : MonoBehaviour
         _paused = false;
         UpdateCanvases();
 
+        _secondsElapsed = 0.0f;
         GameOverSoundSource.Stop();
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);

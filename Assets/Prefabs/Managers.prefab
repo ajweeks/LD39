@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayingFieldDimensions: {x: 17, y: 11}
-  BounceSound: {fileID: 8300000, guid: a0ed52e2bb2180d458734fd750d10a13, type: 3}
+  BounceSound: {fileID: 8300000, guid: bf4bbaaa5777ae940a6f2395cfb47581, type: 3}
   ButtonClickSound: {fileID: 8300000, guid: b6c27b7c89ccb82478a432f3b682230e, type: 3}
   GameOverSound: {fileID: 8300000, guid: 787f9659aff96974db948ea44b58249e, type: 3}
-  BatteryPickupSound: {fileID: 8300000, guid: 90b0b48bddff32f4ea4b37dd271b7af0, type: 3}
-  BigBatteryPickupSound: {fileID: 8300000, guid: cb03b90c73a41bb42b5120bc66d1b7ff,
+  BatteryPickupSound: {fileID: 8300000, guid: ae4d1d13f199fe040a3d47705f3b118a, type: 3}
+  BigBatteryPickupSound: {fileID: 8300000, guid: 81a3bd68af6c6684ca91d5760ea18452,
     type: 3}
   BackgroundMusic: {fileID: 8300000, guid: b0f8e2f58e5d30147a6081a3aa439ce3, type: 3}
   _paused: 0

@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: mat_Enemy
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -85,6 +85,6 @@ Material:
     - iLTPower: 1
     m_Colors:
     - _Color: {r: 0.71323526, g: 0.015733145, b: 0.015733145, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.27205884, g: 0, b: 0, a: 1}
     - _lightPosition: {r: 0, g: 0, b: 0, a: 0}
     - fLTAmbient: {r: 0, g: 0, b: 0, a: 1}
