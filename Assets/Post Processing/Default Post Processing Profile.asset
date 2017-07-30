@@ -120,7 +120,7 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0.39
+        postExposure: 0.5
         temperature: 0
         tint: 0
         hueShift: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
             serializedVersion: 2
             m_Curve:
             - serializedVersion: 2
-              time: 0
+              time: 0.002
               value: 0
               inSlope: 1
               outSlope: 1

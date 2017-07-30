@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
         // Give player an easy start
-        _secondsSinceLastSpawn = 0.0f;
+        _secondsSinceLastSpawn = -SecondsBetweenSpawns;
 
     }
 	
