@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 public class BombManager : MonoBehaviour
@@ -57,7 +58,14 @@ public class BombManager : MonoBehaviour
 
     public void OnBombExplosion(Bomb bomb)
     {
-        // TODO: Play bomb sound here
+        bomb.GetComponent<MeshRenderer>().enabled = false;
+        DestroyBombAfterSeconds(1.0f, bomb);
+    }
+
+    private IEnumerator DestroyBombAfterSeconds(float seconds, Bomb bomb)
+    {
+        yield return new WaitForSeconds(seconds);
+
         Destroy(bomb.gameObject);
     }
 

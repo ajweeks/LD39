@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220897666233484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.054, y: 0.106, z: 2.1879997}
+  m_LocalPosition: {x: 0, y: 0.106, z: 2.1879997}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4846301753647900}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: e79ef980ff7fd25448e928353167fc23, type: 2}
@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17b6a4cb73af594fa3fe0266c0cce60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScreenShakeScale: 0.524
 --- !u!114 &114241930487564028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,9 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a72d48828ac5c4bb200c416c8c7ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 0
-  DistanceStrengthScale: 0
-  Strength: 0
+  Range: 3
+  DistanceStrengthScale: 2
+  Strength: 0.75
 --- !u!135 &135293909602442050
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -217,7 +218,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.0271043, y: -3.070208, z: -0.8507654}
+  m_ConnectedAnchor: {x: -0.0011003766, y: -2.6897857, z: -0.85067064}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

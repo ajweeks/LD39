@@ -18,6 +18,8 @@ public class Bomb : MonoBehaviour
     private GameManager _gameManager;
     private MeshRenderer _meshRenderer;
 
+    private bool _expolded = false;
+
 	void Start () 
 	{
         _bombManager = GameObject.Find("Managers").GetComponent<BombManager>();
@@ -27,6 +29,8 @@ public class Bomb : MonoBehaviour
 	
 	void Update () 
 	{
+        if (_expolded) return;
+
 		if (_fuseLit)
         {
             _secondsLit += Time.deltaTime;
@@ -46,11 +50,9 @@ public class Bomb : MonoBehaviour
                     }
                 }
 
-                _bombManager.OnBombExplosion(this);
-
+                _expolded = true;
                 _gameManager.OnExplosion();
-
-                // TODO: Trigger explosion particles
+                _bombManager.OnBombExplosion(this);
             }
             else
             {

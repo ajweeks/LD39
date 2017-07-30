@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bomb: {fileID: 1651142642600684, guid: be50206fb5db79e4bbdafb52ed56c80e, type: 2}
-  SecondsOfInitialDelay: 0
+  SecondsOfInitialDelay: 3
   SecondsBetweenBombs: 4.5
   SpawnHeight: 10
 --- !u!114 &114726494215175362
