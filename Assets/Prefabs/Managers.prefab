@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114067320767204338}
   - component: {fileID: 114726494215175362}
   - component: {fileID: 114065897977916922}
+  - component: {fileID: 114442103079096252}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -100,6 +101,17 @@ MonoBehaviour:
   BigBatteryChance: 0.449
   SecondsBetweenBatterySpawns: 2
   SecondsBeforeBatteryDespawn: 6
+--- !u!114 &114442103079096252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972853853140322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66e017db63882040b7ef384de5940a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114726494215175362
 MonoBehaviour:
   m_ObjectHideFlags: 1

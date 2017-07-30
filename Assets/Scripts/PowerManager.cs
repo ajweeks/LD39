@@ -26,6 +26,14 @@ public class PowerManager : MonoBehaviour
         }
 	}
 
+    public void OnBombExplosion(Bomb bomb)
+    {
+        float dist = Vector3.Distance(bomb.transform.position, transform.position);
+        float distScale = 1.0f - (dist / bomb.ExplosionRadius); // The closer we are the more we get drained
+        distScale = Mathf.Clamp01(distScale);
+        _powerLevel -= bomb.PlayerPowerDrain * distScale;
+    }
+
     public void OnBatteryPickup(Battery battery)
     {
         _powerLevel += battery.PowerLevel;

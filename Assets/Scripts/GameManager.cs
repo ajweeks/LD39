@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public static float EnemyDrainOnTouchAmount;
 
+    [HideInInspector]
     public bool Paused { get { return _paused; } set { OnPause(value); } }
     public bool _paused = false;
 
@@ -86,26 +87,32 @@ public class GameManager : MonoBehaviour
         BackgroundMusicSource.loop = true;
         BackgroundMusicSource.clip = BackgroundMusic;
         BackgroundMusicSource.Play();
+
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Default"), LayerMask.NameToLayer("GroundPlane"));
     }
 
     void Update() 
 	{
-        float lastSecondsElapsed = _secondsElapsed;
         _secondsElapsed += Time.deltaTime;
 
-        // Only update timer if we changed 
-        //if (Mathf.Floor(_secondsElapsed) != Mathf.Floor(lastSecondsElapsed))
-        //{
-        _timerText.text = _secondsElapsed.ToString("#.0") + "s";
-        //}
+        if (_timerText)
+        {
+            _timerText.text = _secondsElapsed.ToString("#.0") + "s";
+        }
 
 
         if (Input.GetButtonUp("Cancel"))
         {
             OnPause(!_paused);
             UpdateCanvases();
+            OnButtonClick();
         }
 	}
+
+    public void OnMainMenuButtonClick()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 
     public void OnGameOver()
     {
@@ -172,7 +179,10 @@ public class GameManager : MonoBehaviour
 
     public void OnButtonClick()
     {
-        ButtonClickSource.Play();
+        if (ButtonClickSource)
+        {
+            ButtonClickSource.Play();
+        }
     }
 
     public void OnPlayerBounce()

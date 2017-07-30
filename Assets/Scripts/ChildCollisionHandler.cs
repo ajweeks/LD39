@@ -14,6 +14,7 @@ public class ChildCollisionHandler : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _rb.WakeUp();
 
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
 
@@ -33,12 +34,15 @@ public class ChildCollisionHandler : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            float xIntensity = _rb.velocity.x * _playerMovement.VelocityShakeScale * ScreenShakeScale;
-            float yIntensity = _rb.velocity.z * _playerMovement.VelocityShakeScale * ScreenShakeScale;
-            float duration = _rb.velocity.magnitude * _playerMovement.VelocityShakeDurationScale * ScreenShakeScale;
-            _cameraController.Shake(xIntensity, yIntensity, duration);
+            if (collision.collider.gameObject.layer != LayerMask.NameToLayer("GroundPlane"))
+            {
+                float xIntensity = _rb.velocity.x * _playerMovement.VelocityShakeScale * ScreenShakeScale;
+                float yIntensity = _rb.velocity.z * _playerMovement.VelocityShakeScale * ScreenShakeScale;
+                float duration = _rb.velocity.magnitude * _playerMovement.VelocityShakeDurationScale * ScreenShakeScale;
+                _cameraController.Shake(xIntensity, yIntensity, duration);
 
-            _gameManager.OnPlayerBounce();
+                _gameManager.OnPlayerBounce();
+            }
         }
     }
 }

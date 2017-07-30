@@ -41,12 +41,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Level"))
         {
-            float xIntensity = _rb.velocity.x * VelocityShakeScale;
-            float yIntensity = _rb.velocity.z * VelocityShakeScale;
-            float duration = _rb.velocity.magnitude * VelocityShakeDurationScale;
-            _cameraController.Shake(xIntensity, yIntensity, duration);
+            if (collision.collider.gameObject.layer != LayerMask.NameToLayer("GroundPlane"))
+            {
+                float xIntensity = _rb.velocity.x * VelocityShakeScale;
+                float yIntensity = _rb.velocity.z * VelocityShakeScale;
+                float duration = _rb.velocity.magnitude * VelocityShakeDurationScale;
+                _cameraController.Shake(xIntensity, yIntensity, duration);
 
-            _gameManager.OnPlayerBounce();
+                _gameManager.OnPlayerBounce();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 50577db28b69acb458c84277031bb439
-timeCreated: 1501340777
+guid: b5fc39d8857a87b4aacb0b19f0e8216f
+timeCreated: 1501403927
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: IDM
+  fontName: Audiowide
   fontNames:
-  - IDM
+  - Audiowide
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
