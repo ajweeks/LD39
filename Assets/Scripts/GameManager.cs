@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -35,7 +36,9 @@ public class GameManager : MonoBehaviour
     private bool _gameOver = false;
 
     private static GameObject _pauseMenu;
+    private static GameObject _pauseMenuResumeButton;
     private static GameObject _gameOverMenu;
+    private static GameObject _gameOverMenuRestartButton;
     private static Text _timerText;
 
     private Slider _pauseVolumeSlider;
@@ -51,6 +54,9 @@ public class GameManager : MonoBehaviour
 
         _pauseMenu = GameObject.Find("PausePanel");
         _gameOverMenu = GameObject.Find("GameOverPanel");
+
+        _pauseMenuResumeButton = _pauseMenu.transform.Find("ResumeButton").gameObject;
+        _gameOverMenuRestartButton = _gameOverMenu.transform.Find("RestartButton").gameObject;
 
         UpdateCanvases();
 
@@ -120,6 +126,7 @@ public class GameManager : MonoBehaviour
 
         _gameOver = true;
         _paused = true;
+        EventSystem.current.SetSelectedGameObject(_gameOverMenuRestartButton);
 
         UpdateCanvases();
     }
@@ -131,10 +138,13 @@ public class GameManager : MonoBehaviour
         if (paused)
         {
             BackgroundMusicSource.Pause();
+            EventSystem.current.SetSelectedGameObject(_pauseMenuResumeButton);
+            _pauseMenuResumeButton.SetActive(true);
         }
         else
         {
             BackgroundMusicSource.Play();
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         UpdateCanvases();
@@ -152,6 +162,7 @@ public class GameManager : MonoBehaviour
         _gameOver = false;
         _paused = false;
         UpdateCanvases();
+        EventSystem.current.SetSelectedGameObject(null);
 
         _secondsElapsed = 0.0f;
         GameOverSoundSource.Stop();
