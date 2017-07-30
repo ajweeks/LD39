@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
- {
+{
     public AudioClip ButtonClickSound;
     private AudioSource ButtonClickSource;
+
+    public AudioClip BackgroundMusic;
+    private AudioSource BackgroundMusicSource;
 
     private GameObject _buttonsPanel;
     private GameObject _playButton;
@@ -26,12 +30,18 @@ public class MainMenuManager : MonoBehaviour
 
         ButtonClickSource = gameObject.AddComponent<AudioSource>();
         ButtonClickSource.clip = ButtonClickSound;
+
+        BackgroundMusicSource = gameObject.AddComponent<AudioSource>();
+        BackgroundMusicSource.clip = BackgroundMusic;
+        BackgroundMusicSource.loop = true;
+        BackgroundMusicSource.Play();
     }
 
     public void OnPlayButtonClick()
     {
         SceneManager.LoadSceneAsync(1);
 
+        BackgroundMusicSource.Stop();
         ButtonClickSource.Play();
     }
 
@@ -58,4 +68,5 @@ public class MainMenuManager : MonoBehaviour
         ButtonClickSource.Play();
         Application.OpenURL("https://twitter.com/liqwidice");
     }
+
 }

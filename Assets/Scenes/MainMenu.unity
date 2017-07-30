@@ -301,7 +301,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.9277682, g: 0.92796206, b: 0.9558824, a: 1}
-  m_Intensity: 0.65
+  m_Intensity: 0.68
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1292,13 +1292,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 571860548}
-  m_LocalRotation: {x: -0.3337388, y: 0.67508376, z: -0.5216775, w: 0.40091524}
+  m_LocalRotation: {x: -0.17334878, y: 0.1454229, z: -0.9740317, w: -0.008045453}
   m_LocalPosition: {x: -10.5, y: 9.03, z: -3.97}
   m_LocalScale: {x: 0.9999999, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 1697253816}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 25.897001, y: 98.58201, z: -74.993004}
+  m_LocalEulerAnglesHint: {x: 16.624, y: 20.486, z: -177.92201}
 --- !u!108 &571860550
 Light:
   m_ObjectHideFlags: 0
@@ -1308,8 +1308,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.98379517, g: 0.9852941, b: 0.87662196, a: 1}
-  m_Intensity: 0.2
+  m_Color: {r: 0.9552038, g: 0.9558824, b: 0.90668255, a: 1}
+  m_Intensity: 0.42
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2947,7 +2947,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.1544118, b: 0.1544118, a: 1}
+  m_Color: {r: 0.29411763, g: 0.3281946, b: 1, a: 1}
   m_Intensity: 1.98
   m_Range: 6.55
   m_SpotAngle: 30
@@ -3723,7 +3723,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.1544118, b: 0.1544118, a: 1}
+  m_Color: {r: 0.29411763, g: 0.3281946, b: 1, a: 1}
   m_Intensity: 1.98
   m_Range: 6.55
   m_SpotAngle: 30
@@ -4604,6 +4604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonClickSound: {fileID: 8300000, guid: b6c27b7c89ccb82478a432f3b682230e, type: 3}
+  BackgroundMusic: {fileID: 8300000, guid: abe92454d2c6e684bb59912b42bd274a, type: 3}
 --- !u!4 &1945955293
 Transform:
   m_ObjectHideFlags: 0
