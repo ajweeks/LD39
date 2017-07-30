@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
     public void OnGameOver()
     {
         GameOverSoundSource.Play();
+        PlayerDamageSoundSource.Play();
 
         _gameOver = true;
         _paused = true;

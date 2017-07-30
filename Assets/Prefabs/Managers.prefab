@@ -149,6 +149,6 @@ MonoBehaviour:
   BigBatteryPickupSound: {fileID: 8300000, guid: 81a3bd68af6c6684ca91d5760ea18452,
     type: 3}
   ExplosionSound: {fileID: 8300000, guid: 0b1949944e923474b9e8adc8f22aefbd, type: 3}
-  PlayerDamageSound: {fileID: 8300000, guid: b6c27b7c89ccb82478a432f3b682230e, type: 3}
+  PlayerDamageSound: {fileID: 8300000, guid: a0ed52e2bb2180d458734fd750d10a13, type: 3}
   BackgroundMusic: {fileID: 8300000, guid: b0f8e2f58e5d30147a6081a3aa439ce3, type: 3}
   _paused: 0

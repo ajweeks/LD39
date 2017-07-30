@@ -7,12 +7,14 @@ public class MainMenuPlayerController : MonoBehaviour
 
     private Rigidbody _rb;
 
-	void Start () 
+	void Start() 
 	{
+        // In case we came from a paused game
+        Time.timeScale = 1.0f;
         _rb = GetComponent<Rigidbody>();
 	}
 	
-	void Update () 
+	void Update() 
 	{
         _rb.AddTorque(new Vector3(
             0.0f,
