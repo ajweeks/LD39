@@ -62,11 +62,4 @@ public class MainMenuManager : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(_playButton);
     }
-
-    public void OnTwitterHandleClick()
-    {
-        ButtonClickSource.Play();
-        Application.OpenURL("https://twitter.com/liqwidice");
-    }
-
 }
