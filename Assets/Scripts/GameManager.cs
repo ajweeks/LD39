@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (Input.GetButtonUp("Cancel"))
+        if (Input.GetButtonUp("Cancel") && !_gameOver)
         {
             OnPause(!_paused);
             UpdateCanvases();
