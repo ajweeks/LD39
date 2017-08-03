@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
         // The user has set their username previously, don't ask for it again
         if (_username.Length > 0)
         {
-            _usernameInputField.enabled = false;
+            if (_usernameInputField != null) _usernameInputField.enabled = false;
             StartCoroutine(AddScoreToLeaderboard());
         }
 
