@@ -141,7 +141,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc8b7a40caedf14d8ec3bb53f61054f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 1052004915694668, guid: 75b15151f2c0d194b873ffddb5227642,
+    type: 2}
+  PlayerColors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0.19230096, g: 0.83823526, b: 0.030817453, a: 0}
+  - {r: 0.20709327, g: 0.049307954, b: 0.83823526, a: 0}
+  - {r: 0.9558824, g: 0.93397266, b: 0.16165656, a: 0}
   PlayingFieldDimensions: {x: 17, y: 11}
+  HighScoreBackgroundPanelImage: {fileID: 10907, guid: 0000000000000000f000000000000000,
+    type: 0}
+  HighScoreBackgroundPanelColor: {r: 0, g: 0, b: 0, a: 0}
   BounceSound: {fileID: 8300000, guid: bf4bbaaa5777ae940a6f2395cfb47581, type: 3}
   ButtonClickSound: {fileID: 8300000, guid: b6c27b7c89ccb82478a432f3b682230e, type: 3}
   GameOverSound: {fileID: 8300000, guid: 787f9659aff96974db948ea44b58249e, type: 3}

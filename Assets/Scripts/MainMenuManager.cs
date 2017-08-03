@@ -12,16 +12,20 @@ public class MainMenuManager : MonoBehaviour
     private AudioSource BackgroundMusicSource;
 
     private GameObject _buttonsPanel;
-    private GameObject _playButton;
+    private GameObject _singlePlayerButton;
+    //private GameObject _multiPlayerButton;
     private GameObject _aboutPanel;
     private GameObject _aboutPanelBackButton;
+    private Text _multiPlayerComingSoonText;
 
     private void Start()
     {
         _buttonsPanel = GameObject.Find("Buttons");
         _buttonsPanel.SetActive(true);
 
-        _playButton = _buttonsPanel.transform.Find("PlayButton").gameObject;
+        _singlePlayerButton = _buttonsPanel.transform.Find("SinglePlayerButton").gameObject;
+        //_multiPlayerButton = _buttonsPanel.transform.Find("MultiPlayerButton").gameObject;
+        _multiPlayerComingSoonText = _buttonsPanel.transform.Find("ComingSoonText").gameObject.GetComponent<Text>();
 
         _aboutPanel = GameObject.Find("About");
         _aboutPanel.SetActive(false);
@@ -60,6 +64,16 @@ public class MainMenuManager : MonoBehaviour
         _aboutPanel.SetActive(false);
         ButtonClickSource.Play();
 
-        EventSystem.current.SetSelectedGameObject(_playButton);
+        EventSystem.current.SetSelectedGameObject(_singlePlayerButton);
+    }
+
+    public void OnMultiplayerButtonSelect()
+    {
+        _multiPlayerComingSoonText.enabled = true;
+    }
+
+    public void OnMultiplayerButtonDeselect()
+    {
+        _multiPlayerComingSoonText.enabled = false;
     }
 }
